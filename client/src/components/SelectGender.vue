@@ -16,8 +16,8 @@
 export default {
     name: 'SelectGender',
     methods:{
-        getGender(val){
-          this.$store.dispatch('getGender', val)
+        getGender(selectGender){
+          this.$store.dispatch('getGender', selectGender)
         }
     }
 }

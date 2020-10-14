@@ -83,18 +83,16 @@ export default {
         generateDays() {
             return [...Array( 31 ).keys()].map( i => ++i )
         },
-        getYear(value) {
-            this.$store.dispatch( 'getYear', value )
+        getYear(selectYear) {
+            this.$store.dispatch( 'getYear', selectYear )
         },
-        getMonth(value) {
-            this.$store.dispatch( 'getMonth', value )
+        getMonth(selectMonth) {
+            this.$store.dispatch( 'getMonth', selectMonth )
         },
-        getDay(value) {
-            this.$store.dispatch( 'getDay', value )
+        getDay(selectDay) {
+            this.$store.dispatch( 'getDay', selectDay )
         }
-
     }
-
 }
 
 </script>

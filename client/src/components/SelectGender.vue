@@ -1,7 +1,7 @@
 <template>
     <div class="gender">
         <v-card-subtitle class="py-0 color">-性別-</v-card-subtitle>
-        <v-radio-group class="ml-2" row @change="gender">
+        <v-radio-group class="ml-2" row @change="getGender">
             <v-radio
                 label="男"
                 value="man"></v-radio>
@@ -16,8 +16,8 @@
 export default {
     name: 'SelectGender',
     methods:{
-        gender(val){
-           this.$emit('gender', val)
+        getGender(val){
+          this.$store.dispatch('getGender', val)
         }
     }
 }

@@ -20,18 +20,11 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 export default {
     name: 'ConsultationText',
-    data(){
-        return{
-            value:''
-        }
-    },
     methods:{
-        sendMsg(val){
-            this.$emit('input', val)
-            this.value = val
-        }
+       ...mapActions(['sendMsg'])
     }
 }
 </script>

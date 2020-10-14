@@ -7,28 +7,33 @@
                 cols="11"
             >
                 <v-select
-                    @change="year"
+                    @change="getYear"
                     label="年"
                     :items="optYear"
                     item-text="label"
                     dense
                     outlined
+                    required
+                    :value="year"
                 >
                 </v-select>
                 <v-select
-                    @change="month"
+                    ref="m"
+                    @change="getMonth"
                     label="月"
                     :items="optMonth"
                     dense
                     outlined
+                    required
                 >
                 </v-select>
                 <v-select
-                    @change="day"
+                    @change="getDay"
                     label="日"
                     :items="optDay"
                     dense
                     outlined
+                    required
                 >
                 </v-select>
             </v-col>
@@ -40,9 +45,10 @@
 <script>
 export default {
 
-    name: 'SelectDateOfBirth',
+    name: 'SelectBirth',
     data() {
         return {
+            year: '',
             nowYear: '',
             optYear: [],
             optMonth: null,
@@ -77,22 +83,20 @@ export default {
         generateDays() {
             return [...Array( 31 ).keys()].map( i => ++i )
         },
-        //各値を親コンポーネントに送る
-        year(value) {
-            console.log( value )
-            this.$emit( 'selectYear', value )
+        getYear(value) {
+            this.$store.dispatch( 'getYear', value )
         },
-        month(value) {
-            console.log( value )
-            this.$emit( 'selectMonth', value )
+        getMonth(value) {
+            this.$store.dispatch( 'getMonth', value )
         },
-        day(value) {
-            console.log( value )
-            this.$emit( 'selectDay', value )
+        getDay(value) {
+            this.$store.dispatch( 'getDay', value )
         }
-    },
+
+    }
 
 }
+
 </script>
 <style scoped>
 .color {

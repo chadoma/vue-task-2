@@ -1,56 +1,55 @@
 <template>
-    <v-card
-        class="mx-auto overflow-hidden"
-        height="400"
-    >
+    <v-container class="navigation">
         <v-app-bar
-            color="deep-purple"
-            dark
+            color="white"
+            width="99%"
+            flat
+            dense
+            outlined
         >
-            <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+            <v-toolbar-title @click="navigateTo({name: 'Home'})" class="text-h4 title">title</v-toolbar-title>
+            <v-spacer/>
 
-            <v-toolbar-title>Title</v-toolbar-title>
+            <v-btn depressed class="mr-5 link" outlined :to="{ name: 'Login'}" rounded-xl color="#333e48">
+               Log in
+            </v-btn>
+            <v-btn  depressed dark :to="{ name: 'Signup'}" rounded-xl color="#ffc20e">
+                Sign up
+            </v-btn>
+
         </v-app-bar>
 
-        <v-navigation-drawer
-            v-model="drawer"
-            absolute
-            temporary
-        >
-            <v-list
-                nav
-                dense
-            >
-                <v-list-item-group
-                    v-model="group"
-                    active-class="deep-purple--text text--accent-4"
-                >
-                    <v-list-item>
-                        <v-list-item-icon>
-                            <v-icon>mdi-home</v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-title>Home</v-list-item-title>
-                    </v-list-item>
+    </v-container>
 
-                    <v-list-item>
-                        <v-list-item-icon>
-                            <v-icon>mdi-account</v-icon>
-                        </v-list-item-icon>
-                        <v-list-item-title>Account</v-list-item-title>
-                    </v-list-item>
-                </v-list-item-group>
-            </v-list>
-        </v-navigation-drawer>
-    </v-card>
 </template>
 
 <script>
 export default {
+    name: 'Navigation',
     data() {
         return {
-            drawer: false,
-            group: null,
+
         }
-    }
+    },
+    methods: {
+        navigateTo(route) {
+           this.$router.push(route)
+        }
+    },
 }
 </script>
+
+<style scoped>
+.title:hover{
+    cursor: pointer;
+    opacity: .7;
+}
+.link{
+    border: 1px solid #EEE;
+}
+.navigation {
+    width: 100%;
+}
+
+
+</style>

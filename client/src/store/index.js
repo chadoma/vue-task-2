@@ -27,11 +27,8 @@ export default new Vuex.Store( {
         ]
     },
     mutations: {
-        curAns(state, val) {
-            state.ans1 = val
-        },
         getYear(state, payload) {
-            state.step1[ 0 ].year = payload
+            state.step1[ 0 ].year = payload.substr( 0, 4 )
         },
         getMonth(state, payload) {
             state.step1[ 0 ].month = payload
@@ -40,28 +37,38 @@ export default new Vuex.Store( {
             state.step1[ 0 ].day = payload
         },
         getGender(state, payload) {
-            state.step1[ 0 ].gender = payload
+            if (payload === 'man') {
+                state.step1[ 0 ].gender = '男'
+            } else {
+                state.step1[ 0 ].gender = '女'
+            }
         },
         selectAns1(state, payload) {
-            state.step2[ 0 ].question1 = payload
+            if (payload === 'yes'){
+                state.step2[ 0 ].question1 = 'はい'
+            } else {
+                state.step2[ 0 ].question1 = 'いいえ'
+            }
         },
         selectAns2(state, payload) {
-            state.step2[ 0 ].question2 = payload
-
+            if (payload === 'yes'){
+                state.step2[ 0 ].question2 = 'はい'
+            } else {
+                state.step2[ 0 ].question2 = 'いいえ'
+            }
         },
         selectAns3(state, payload) {
-            state.step2[ 0 ].question3 = payload
+            if (payload === 'yes'){
+                state.step2[ 0 ].question3 = 'はい'
+            } else {
+                state.step2[ 0 ].question3 = 'いいえ'
+            }
         },
         sendMsg(state, payload) {
             state.step3[ 0 ].message = payload
         }
     },
     actions: {
-        curAns({ commit }, ans1, val) {
-            commit( 'curAns', ans1, val )
-            console.log( ans1, val )
-            console.log( commit )
-        },
         getYear({ commit }, payload) {
             commit( 'getYear', payload )
         },
@@ -87,7 +94,6 @@ export default new Vuex.Store( {
         sendMsg({ commit }, payload) {
             commit( 'sendMsg', payload )
         }
-
     },
     modules: {}
 } );
